@@ -1,6 +1,7 @@
 ﻿using Flunt.Notifications;
 using System;
 using System.Linq;
+using Valhalla.Modules.Application.DistributedMessaging;
 using Valhalla.Modules.Application.Inputs.Order;
 using Valhalla.Modules.Application.Repositories;
 using Valhalla.Modules.Domain.Entities;
@@ -12,6 +13,7 @@ namespace Valhalla.Modules.Application.Commands.PlaceOrder
     {
         private readonly ICustomerReadOnlyRepository _customerReadOnlyRepository;
         private readonly IOrderWriteRepository _orderWriteOnlyRepository;
+        private readonly IKafkaProducer _kafkaProducer;
 
         //mockados para demo
         private Customer _customer;
@@ -19,11 +21,15 @@ namespace Valhalla.Modules.Application.Commands.PlaceOrder
 
         public PlaceOrderUseCase(
             ICustomerReadOnlyRepository customerReadOnlyRepository,
-            IOrderWriteRepository orderWriteOnlyRepository)
+            IOrderWriteRepository orderWriteOnlyRepository,
+            IKafkaProducer kafkaProducer)
         {
             _customerReadOnlyRepository = customerReadOnlyRepository;
             _orderWriteOnlyRepository = orderWriteOnlyRepository;
+            _kafkaProducer = kafkaProducer;
         }
+
+
 
         //To-DO: criar uma padrão para retorno com smart notification
         public string Execute(PlaceOrderInput order)
@@ -64,6 +70,8 @@ namespace Valhalla.Modules.Application.Commands.PlaceOrder
             try
             {
                 orderId = _orderWriteOnlyRepository.PlaceOrder(_customer, _order);
+
+                _kafkaProducer.Produce(orderId);
             }
             catch (Exception ex)
             {

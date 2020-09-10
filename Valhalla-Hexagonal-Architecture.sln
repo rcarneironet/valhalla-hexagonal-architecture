@@ -3,10 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30320.27
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Stock.Handler", "src\Handlers\Stock.Handler\Stock.Handler.csproj", "{49BC7C50-E668-4EAD-9084-2944A84D0538}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Handlers", "Handlers", "{C203A92E-D731-482B-A63B-057F4499EC83}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{12D2991B-2917-4A26-A380-C89FCEC2B790}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Modules", "Modules", "{F0DD3F33-5B55-4B54-A879-46DCF5954CBF}"
@@ -29,10 +25,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{49BC7C50-E668-4EAD-9084-2944A84D0538}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{49BC7C50-E668-4EAD-9084-2944A84D0538}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{49BC7C50-E668-4EAD-9084-2944A84D0538}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{49BC7C50-E668-4EAD-9084-2944A84D0538}.Release|Any CPU.Build.0 = Release|Any CPU
 		{61BB821F-E07C-4629-94CF-1A90BFFAA989}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{61BB821F-E07C-4629-94CF-1A90BFFAA989}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{61BB821F-E07C-4629-94CF-1A90BFFAA989}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -58,7 +50,6 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{49BC7C50-E668-4EAD-9084-2944A84D0538} = {C203A92E-D731-482B-A63B-057F4499EC83}
 		{61BB821F-E07C-4629-94CF-1A90BFFAA989} = {F0DD3F33-5B55-4B54-A879-46DCF5954CBF}
 		{8FB818E5-3E2E-4E08-B3CF-7E59DFECD24D} = {12D2991B-2917-4A26-A380-C89FCEC2B790}
 		{89BAC00D-B971-435A-B95C-7C56740B1230} = {F0DD3F33-5B55-4B54-A879-46DCF5954CBF}
