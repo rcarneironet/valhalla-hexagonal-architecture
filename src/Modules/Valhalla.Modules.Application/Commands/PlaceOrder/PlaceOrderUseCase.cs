@@ -28,34 +28,31 @@ namespace Valhalla.Modules.Application.Commands.PlaceOrder
 
         public Guid Execute(Guid customerId)
         {
-            Customer customer = _customerReadOnlyRepository.Get(customerId);
-            if (customer == null)
-            {
-                AddNotification("Customer", "Customer does not exist.");
-            }
+            #region Obter dados do banco
+            //Customer customer = _customerReadOnlyRepository.Get(customerId);
+            //if (customer == null)
+            //{
+            //    AddNotification("Customer", "Customer does not exist.");
+            //}
+            #endregion
 
-            //Simular dados
-            var name = new NameVo("Ray", "C");
+            //Simulando dados, não implementei acesso a dados
+            var name = new NameVo("Ray", "Carneiro");
             var cpf = new CpfVo("15366015006");
             var email = new EmailVo("contato@academiadotnet.com.br");
 
             _teclado = new Product("Teclado Microsoft", "Melhor teclado", "teclado.jpg", 10M, 10);
             _mouse = new Product("Mouse Microsoft", "Melhor mouse", "mouse.jpg", 5M, 10);
             _monitor = new Product("Dell", "Melhor monitor", "dell.jpg", 50M, 10);
-
             _customer = new Customer(name, cpf, email, "11-5555-5555");
-            _order = new Order(_customer);
 
-            name.Validate();
-            cpf.Validate();
-            email.Validate();
-
-            //Maybe use a better validation approach
-            if (name.Invalid || cpf.Invalid || email.Invalid)
+            if (_customer.Invalid)
             {
-                AddNotification("Order", "Algo deu errado na sua ordem: " + Notifications);
+                AddNotification("Order", "Algo deu errado na sua ordem: " + _customer.Notifications.ToString());
                 return Guid.Empty;
             }
+
+            _order = new Order(_customer);
 
             Guid? order;
 

@@ -1,11 +1,13 @@
-﻿using System;
+﻿using Flunt.Notifications;
+using Flunt.Validations;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Valhalla.Modules.Domain.ValueObjects;
 
 namespace Valhalla.Modules.Domain.Entities
 {
-    public class Customer : IEntity
+    public class Customer : Notifiable, IEntity, IValidatable
     {
         public Guid Id { get; private set; }
         private readonly IList<Address> _addresses;
@@ -17,6 +19,8 @@ namespace Valhalla.Modules.Domain.Entities
             Email = email;
             Phone = phone;
             _addresses = new List<Address>();
+
+            Validate();
         }
 
         public NameVo Name { get; private set; }
@@ -35,5 +39,14 @@ namespace Valhalla.Modules.Domain.Entities
             return Name.ToString();
         }
 
+        public void Validate()
+        {
+            AddNotifications(
+                new Flunt.Validations.Contract()
+                .IsTrue(Name.Valid, "Name", "Nome inválido")
+                .IsTrue(Cpf.Valid, "Name", "Cpf inválido")
+                .IsTrue(Email.Valid, "Email", "Email inválido")
+                    );
+        }
     }
 }

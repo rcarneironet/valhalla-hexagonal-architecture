@@ -9,6 +9,7 @@ namespace Valhalla.Modules.Domain.ValueObjects
         public CpfVo(string number)
         {
             Number = number;
+            Validate();
         }
 
         public void Validate()

@@ -8,6 +8,7 @@ namespace Valhalla.Modules.Domain.ValueObjects
         public EmailVo(string address)
         {
             Address = address;
+            Validate();
         }
 
         public string Address { get; private set; }

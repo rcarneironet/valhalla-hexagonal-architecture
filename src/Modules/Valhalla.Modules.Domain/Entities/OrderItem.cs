@@ -13,8 +13,8 @@ namespace Valhalla.Modules.Domain.Entities
 
             if (product.StockQuantity < quantity)
             {
-                AddNotification("Quantity", "Product out of stock");
-            }
+                AddNotification("Quantidade", "Produto sem estoque");
+            }            
         }
         public Guid Id { get; private set; }
         public Product Product { get; private set; }

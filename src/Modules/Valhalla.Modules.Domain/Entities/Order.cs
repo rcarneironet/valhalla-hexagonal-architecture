@@ -36,7 +36,8 @@ namespace Valhalla.Modules.Domain.Entities
             {
                 AddNotification("OrderItem", $"Product {product.Title} does not have {quantity} in stock!");
             }
-
+            
+            product.WidthdrawStockQuantity(quantity);
             var item = new OrderItem(product, quantity);
             _itens.Add(item);
         }

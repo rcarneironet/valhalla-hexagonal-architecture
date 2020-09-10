@@ -9,6 +9,7 @@ namespace Valhalla.Modules.Domain.ValueObjects
         {
             FirstName = firstName;
             LastName = lastName;
+            Validate();
         }
         public string FirstName { get; private set; }
         public string LastName { get; private set; }
