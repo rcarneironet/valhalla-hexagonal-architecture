@@ -6,9 +6,9 @@ namespace Valhalla.Tests.Fakes
 {
     public class FakeOrderWriteRepository : IOrderWriteRepository
     {
-        public Guid PlaceOrder(Customer customer, Order order)
+        public string PlaceOrder(Customer customer, Order order)
         {
-            return Guid.NewGuid();
+            return "0123456789";
         }
     }
 }

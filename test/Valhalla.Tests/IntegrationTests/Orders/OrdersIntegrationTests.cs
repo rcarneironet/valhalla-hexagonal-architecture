@@ -29,7 +29,7 @@ namespace Valhalla.Tests.IntegrationTests.Orders
                 }
             };
 
-            Guid order = _placeOrder.Execute(orderInput);
+            string order = _placeOrder.Execute(orderInput);
 
             AddNotifications(_placeOrder.Notifications);
 

@@ -1,5 +1,6 @@
 ﻿using Flunt.Notifications;
 using System;
+using System.Linq;
 using Valhalla.Modules.Application.Inputs.Order;
 using Valhalla.Modules.Application.Repositories;
 using Valhalla.Modules.Domain.Entities;
@@ -24,7 +25,8 @@ namespace Valhalla.Modules.Application.Commands.PlaceOrder
             _orderWriteOnlyRepository = orderWriteOnlyRepository;
         }
 
-        public Guid Execute(PlaceOrderInput order)
+        //To-DO: criar uma padrão para retorno com smart notification
+        public string Execute(PlaceOrderInput order)
         {
 
             #region Obter dados do banco
@@ -43,8 +45,8 @@ namespace Valhalla.Modules.Application.Commands.PlaceOrder
 
             if (_customer.Invalid)
             {
-                AddNotification("Order", "Algo deu errado na sua ordem: " + _customer.Notifications.ToString());
-                return Guid.Empty;
+                AddNotification("Cliente", "Erros identificados nos dados de cliente: ");
+                return _customer.Notifications.FirstOrDefault().Message;
             }
 
             _order = new Order(_customer);
@@ -53,11 +55,11 @@ namespace Valhalla.Modules.Application.Commands.PlaceOrder
 
             if (_order.Invalid)
             {
-                AddNotification("Order", "Existe algum problema em sua ordem: " + _order.Notifications.ToString());
-                return Guid.Empty;
+                AddNotification("Pedido", "Erros identificados nos dados do seu pedido: ");
+                return _order.Notifications.FirstOrDefault().Message;
             }
 
-            Guid? orderId;
+            string orderId;
 
             try
             {
@@ -69,7 +71,7 @@ namespace Valhalla.Modules.Application.Commands.PlaceOrder
                 throw;
             }
 
-            return orderId.HasValue ? orderId.Value : Guid.Empty;
+            return "Número do pedido: " + orderId;
         }
     }
 }

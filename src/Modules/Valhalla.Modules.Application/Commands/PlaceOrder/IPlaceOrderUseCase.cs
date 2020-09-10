@@ -5,6 +5,6 @@ namespace Valhalla.Modules.Application.Commands.PlaceOrder
 {
     public interface IPlaceOrderUseCase
     {
-        Guid Execute(PlaceOrderInput orderInput);
+        string Execute(PlaceOrderInput orderInput);
     }
 }

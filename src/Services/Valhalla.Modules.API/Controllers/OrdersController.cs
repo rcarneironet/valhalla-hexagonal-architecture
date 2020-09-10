@@ -22,12 +22,7 @@ namespace Valhalla.Modules.API.Controllers
         [ProducesResponseType(500)]
         public IActionResult Post([FromBody] PlaceOrderInput input)
         {
-            Guid orderId = _placeOrderService.Execute(input);
-
-            if (orderId == Guid.Empty)
-                return new NoContentResult();
-
-            return Accepted();
+            return Ok(new { Message = _placeOrderService.Execute(input) });
 
         }
     }

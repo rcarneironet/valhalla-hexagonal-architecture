@@ -5,6 +5,6 @@ namespace Valhalla.Modules.Application.Repositories
 {
     public interface IOrderWriteRepository
     {
-        Guid PlaceOrder(Customer customer, Order order);
+        string PlaceOrder(Customer customer, Order order);
     }
 }
