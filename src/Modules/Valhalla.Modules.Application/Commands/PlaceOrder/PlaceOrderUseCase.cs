@@ -7,15 +7,12 @@ using Valhalla.Modules.Domain.ValueObjects;
 
 namespace Valhalla.Modules.Application.Commands.PlaceOrder
 {
-    public sealed class PlaceOrderUseCase : Notifiable, IPlaceOrderUseCase
+    public class PlaceOrderUseCase : Notifiable, IPlaceOrderUseCase
     {
         private readonly ICustomerReadOnlyRepository _customerReadOnlyRepository;
         private readonly IOrderWriteRepository _orderWriteOnlyRepository;
 
-        //produtos, customer e order mockados para fins de exemplo
-        private Product _teclado;
-        private Product _mouse;
-        private Product _monitor;
+        //mockados para demo
         private Customer _customer;
         private Order _order;
 
@@ -29,6 +26,7 @@ namespace Valhalla.Modules.Application.Commands.PlaceOrder
 
         public Guid Execute(PlaceOrderInput order)
         {
+
             #region Obter dados do banco
             //Customer customer = _customerReadOnlyRepository.Get(customerId);
             //if (customer == null)
@@ -41,8 +39,6 @@ namespace Valhalla.Modules.Application.Commands.PlaceOrder
             var name = new NameVo("Ray", "Carneiro");
             var cpf = new CpfVo("15366015006");
             var email = new EmailVo("contato@academiadotnet.com.br");
-            //_teclado = new Product("Teclado Microsoft", "Melhor teclado", "teclado.jpg", 10M, 10);
-            //_mouse = new Product("Mouse Microsoft", "Melhor mouse", "mouse.jpg", 5M, 10);
             _customer = new Customer(name, cpf, email, "11-5555-5555");
 
             if (_customer.Invalid)
@@ -52,7 +48,14 @@ namespace Valhalla.Modules.Application.Commands.PlaceOrder
             }
 
             _order = new Order(_customer);
-            _order.AddItem(order.OrderItem.Product, order.OrderItem.Quantity);
+            var product = new Product(order.ProductItem.Title, order.ProductItem.Description, order.ProductItem.Image, order.ProductItem.Price, 10);
+            _order.AddItem(product, order.ProductItem.Quantity);
+
+            if (_order.Invalid)
+            {
+                AddNotification("Order", "Existe algum problema em sua ordem: " + _order.Notifications.ToString());
+                return Guid.Empty;
+            }
 
             Guid? orderId;
 

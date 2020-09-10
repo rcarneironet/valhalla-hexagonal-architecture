@@ -19,7 +19,14 @@ namespace Valhalla.Tests.IntegrationTests.Orders
             var orderInput = new PlaceOrderInput()
             {
                 CustomerId = customerId,
-                OrderItem = new OrderItem(new Product("Teclado Microsoft", "Melhor teclado", "teclado.jpg", 10M, 10), 10)
+                ProductItem = new PlaceOrderProductInput()
+                {
+                    Description = "O melhor teclado da Microsoft",
+                    Image = "teclado.png",
+                    Price = 10M,
+                    Title = "Teclado Microsoft",
+                    Quantity = 5
+                }
             };
 
             Guid order = _placeOrder.Execute(orderInput);

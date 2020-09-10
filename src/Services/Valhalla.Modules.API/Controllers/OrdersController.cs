@@ -3,8 +3,10 @@ using System;
 using Valhalla.Modules.Application.Commands.PlaceOrder;
 using Valhalla.Modules.Application.Inputs.Order;
 
-namespace Valhalla.Modules.API.Controllers.UseCases.Orders
+namespace Valhalla.Modules.API.Controllers
 {
+    [Route("api/[controller]")]
+    [ApiController]
     public class OrdersController : Controller
     {
 
@@ -21,7 +23,12 @@ namespace Valhalla.Modules.API.Controllers.UseCases.Orders
         public IActionResult Post([FromBody] PlaceOrderInput input)
         {
             Guid orderId = _placeOrderService.Execute(input);
-            return Ok();
+
+            if (orderId == Guid.Empty)
+                return new NoContentResult();
+
+            return Accepted();
+
         }
     }
 }

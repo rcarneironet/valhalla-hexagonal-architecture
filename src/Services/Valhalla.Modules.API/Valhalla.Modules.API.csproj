@@ -16,6 +16,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Modules\Valhalla.Modules.Application\Valhalla.Modules.Application.csproj" />
+    <ProjectReference Include="..\..\Modules\Valhalla.Modules.Infrastructure\Valhalla.Modules.Infrastructure.csproj" />
   </ItemGroup>
 
 
