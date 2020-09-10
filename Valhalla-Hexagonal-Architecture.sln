@@ -17,7 +17,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Valhalla.Tests", "test\Valh
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Valhalla.Modules.Domain", "src\Modules\Valhalla.Modules.Domain\Valhalla.Modules.Domain.csproj", "{89BAC00D-B971-435A-B95C-7C56740B1230}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Valhalla.Modules.Application", "src\Modules\Valhalla.Modules.Application\Valhalla.Modules.Application.csproj", "{2DB97140-F6D2-48D0-8A61-DEF90B58280C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Valhalla.Modules.Application", "src\Modules\Valhalla.Modules.Application\Valhalla.Modules.Application.csproj", "{2DB97140-F6D2-48D0-8A61-DEF90B58280C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "API", "API", "{E72D3EAC-1DF2-4D57-A699-CCBA106C22F4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Valhalla.Modules.API", "src\Services\Valhalla.Modules.API\Valhalla.Modules.API.csproj", "{D268B1BF-177D-4723-8942-EFC6DE06369A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +49,10 @@ Global
 		{2DB97140-F6D2-48D0-8A61-DEF90B58280C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2DB97140-F6D2-48D0-8A61-DEF90B58280C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2DB97140-F6D2-48D0-8A61-DEF90B58280C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D268B1BF-177D-4723-8942-EFC6DE06369A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D268B1BF-177D-4723-8942-EFC6DE06369A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D268B1BF-177D-4723-8942-EFC6DE06369A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D268B1BF-177D-4723-8942-EFC6DE06369A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -55,6 +63,7 @@ Global
 		{8FB818E5-3E2E-4E08-B3CF-7E59DFECD24D} = {12D2991B-2917-4A26-A380-C89FCEC2B790}
 		{89BAC00D-B971-435A-B95C-7C56740B1230} = {F0DD3F33-5B55-4B54-A879-46DCF5954CBF}
 		{2DB97140-F6D2-48D0-8A61-DEF90B58280C} = {F0DD3F33-5B55-4B54-A879-46DCF5954CBF}
+		{D268B1BF-177D-4723-8942-EFC6DE06369A} = {E72D3EAC-1DF2-4D57-A699-CCBA106C22F4}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {7E327B6B-06DF-40F1-A108-0B8BB272B97A}

@@ -82,18 +82,5 @@ namespace Valhalla.Tests.UnitTesting.EntitiesTests
 
             Assert.AreEqual(2, _order.Deliveries.Count);
         }
-
-        [Test]
-        public void OrderTests_PlaceOrder_ReturnOrderNumber()
-        {
-            PlaceOrderUseCase _placeOrder = new PlaceOrderUseCase(new FakeCustomerReadOnlyRepository(), new FakeOrderWriteRepository());
-            Guid customerId = Guid.NewGuid();
-            Guid order = _placeOrder.Execute(customerId);
-
-            AddNotifications(_placeOrder.Notifications);
-
-            Assert.AreEqual(true, !Invalid);
-        }
-
     }
 }

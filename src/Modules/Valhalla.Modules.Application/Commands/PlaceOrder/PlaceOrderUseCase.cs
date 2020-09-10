@@ -1,5 +1,6 @@
 ﻿using Flunt.Notifications;
 using System;
+using Valhalla.Modules.Application.Inputs.Order;
 using Valhalla.Modules.Application.Repositories;
 using Valhalla.Modules.Domain.Entities;
 using Valhalla.Modules.Domain.ValueObjects;
@@ -26,7 +27,7 @@ namespace Valhalla.Modules.Application.Commands.PlaceOrder
             _orderWriteOnlyRepository = orderWriteOnlyRepository;
         }
 
-        public Guid Execute(Guid customerId)
+        public Guid Execute(PlaceOrderInput order)
         {
             #region Obter dados do banco
             //Customer customer = _customerReadOnlyRepository.Get(customerId);
@@ -40,10 +41,8 @@ namespace Valhalla.Modules.Application.Commands.PlaceOrder
             var name = new NameVo("Ray", "Carneiro");
             var cpf = new CpfVo("15366015006");
             var email = new EmailVo("contato@academiadotnet.com.br");
-
-            _teclado = new Product("Teclado Microsoft", "Melhor teclado", "teclado.jpg", 10M, 10);
-            _mouse = new Product("Mouse Microsoft", "Melhor mouse", "mouse.jpg", 5M, 10);
-            _monitor = new Product("Dell", "Melhor monitor", "dell.jpg", 50M, 10);
+            //_teclado = new Product("Teclado Microsoft", "Melhor teclado", "teclado.jpg", 10M, 10);
+            //_mouse = new Product("Mouse Microsoft", "Melhor mouse", "mouse.jpg", 5M, 10);
             _customer = new Customer(name, cpf, email, "11-5555-5555");
 
             if (_customer.Invalid)
@@ -53,12 +52,13 @@ namespace Valhalla.Modules.Application.Commands.PlaceOrder
             }
 
             _order = new Order(_customer);
+            _order.AddItem(order.OrderItem.Product, order.OrderItem.Quantity);
 
-            Guid? order;
+            Guid? orderId;
 
             try
             {
-                order = _orderWriteOnlyRepository.PlaceOrder(_customer, _order);
+                orderId = _orderWriteOnlyRepository.PlaceOrder(_customer, _order);
             }
             catch (Exception ex)
             {
@@ -66,7 +66,7 @@ namespace Valhalla.Modules.Application.Commands.PlaceOrder
                 throw;
             }
 
-            return order.HasValue ? order.Value : Guid.Empty;
+            return orderId.HasValue ? orderId.Value : Guid.Empty;
         }
     }
 }
