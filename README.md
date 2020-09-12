@@ -1,2 +1,2 @@
 # valhalla-hexagonal-architecture
-Hexagonal architecture showcase
+Implementação demo de uma arquitetura Hexagonal
