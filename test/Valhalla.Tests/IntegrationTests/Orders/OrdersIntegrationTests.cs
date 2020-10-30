@@ -13,7 +13,11 @@ namespace Valhalla.Tests.IntegrationTests.Orders
         [Test]
         public void OrderTests_PlaceOrder_ReturnOrderNumber()
         {
-            PlaceOrderUseCase _placeOrder = new PlaceOrderUseCase(new FakeCustomerReadOnlyRepository(), new FakeOrderWriteRepository());
+            PlaceOrderUseCase _placeOrder = new PlaceOrderUseCase(
+                new FakeCustomerReadOnlyRepository(), 
+                new FakeOrderWriteRepository(), 
+                new FakeKafkaProducer());
+
             Guid customerId = Guid.NewGuid();
 
             var orderInput = new PlaceOrderInput()
