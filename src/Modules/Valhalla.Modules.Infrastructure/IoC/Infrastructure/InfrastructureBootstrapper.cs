@@ -2,7 +2,8 @@
 using Valhalla.Adapters.KafkaStreaming.Producer;
 using Valhalla.Adapters.SqlServerDataAccess.ReadOnlyRepositories;
 using Valhalla.Adapters.SqlServerDataAccess.WriteOnlyRepositories;
-using Valhalla.Modules.Application.Repositories;
+using Valhalla.Modules.Application.Abstractions.Commands;
+using Valhalla.Modules.Application.Abstractions.Queries;
 
 namespace Valhalla.Modules.Infrastructure.IoC.Infrastructure
 {

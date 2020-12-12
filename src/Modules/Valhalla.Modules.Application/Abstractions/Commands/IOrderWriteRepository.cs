@@ -1,7 +1,6 @@
-﻿using System;
-using Valhalla.Modules.Domain.Entities;
+﻿using Valhalla.Modules.Domain.Entities;
 
-namespace Valhalla.Modules.Application.Repositories
+namespace Valhalla.Modules.Application.Abstractions.Commands
 {
     public interface IOrderWriteRepository
     {
