@@ -1,10 +1,9 @@
 ﻿using Confluent.Kafka;
 using System.Text.Json;
-using Valhalla.Modules.Application.DistributedMessaging;
 
-namespace Valhalla.Modules.Infrastructure.DistributedMessaging
+namespace Valhalla.Adapters.KafkaStreaming.Producer
 {
-    public class KafkaProducer : IKafkaProducer
+    public class KafkaAdapterProducer : IKafkaAdapter
     {
         public void Produce(object data)
         {
@@ -14,12 +13,16 @@ namespace Valhalla.Modules.Infrastructure.DistributedMessaging
                 try
                 {
                     var dr = p.ProduceAsync("orders-topic",
-                        new Message<Null, string> { Value = JsonSerializer.Serialize(data) });
+                        new Message<Null, string>
+                        {
+                            Value = JsonSerializer.Serialize(data)
+                        });
+                    p.Flush();
                 }
                 catch (ProduceException<Null, string> e)
                 {
-
-                    string erro = e.Error.Reason;
+                    //please implement a better exception :)
+                    _ = e.Error.Reason;
                 }
             }
         }

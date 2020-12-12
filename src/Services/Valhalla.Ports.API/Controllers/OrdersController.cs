@@ -3,7 +3,7 @@ using System;
 using Valhalla.Modules.Application.Commands.PlaceOrder;
 using Valhalla.Modules.Application.Inputs.Order;
 
-namespace Valhalla.Modules.API.Controllers
+namespace Valhalla.Ports.OrderAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -22,7 +22,9 @@ namespace Valhalla.Modules.API.Controllers
         [ProducesResponseType(500)]
         public IActionResult Post([FromBody] PlaceOrderInput input)
         {
-            return Ok(new { Message = _placeOrderService.Execute(input) });
+            var order = _placeOrderService.Execute(input);            
+            Console.WriteLine("Ordem criada: " + order);//apenas para efeito de demo
+            return Ok(new { Message = "Ordem criada: " + order }); ;
 
         }
     }

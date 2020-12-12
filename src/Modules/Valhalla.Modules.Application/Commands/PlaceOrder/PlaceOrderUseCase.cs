@@ -1,7 +1,6 @@
 ﻿using Flunt.Notifications;
-using System;
 using System.Linq;
-using Valhalla.Modules.Application.DistributedMessaging;
+using Valhalla.Adapters.KafkaStreaming.Producer;
 using Valhalla.Modules.Application.Inputs.Order;
 using Valhalla.Modules.Application.Repositories;
 using Valhalla.Modules.Domain.Entities;
@@ -13,7 +12,7 @@ namespace Valhalla.Modules.Application.Commands.PlaceOrder
     {
         private readonly ICustomerReadOnlyRepository _customerReadOnlyRepository;
         private readonly IOrderWriteRepository _orderWriteOnlyRepository;
-        private readonly IKafkaProducer _kafkaProducer;
+        private readonly IKafkaAdapter _kafkaAdapter;
 
         //mockados para demo
         private Customer _customer;
@@ -22,28 +21,15 @@ namespace Valhalla.Modules.Application.Commands.PlaceOrder
         public PlaceOrderUseCase(
             ICustomerReadOnlyRepository customerReadOnlyRepository,
             IOrderWriteRepository orderWriteOnlyRepository,
-            IKafkaProducer kafkaProducer)
+            IKafkaAdapter kafkaAdapter)
         {
             _customerReadOnlyRepository = customerReadOnlyRepository;
             _orderWriteOnlyRepository = orderWriteOnlyRepository;
-            _kafkaProducer = kafkaProducer;
+            _kafkaAdapter = kafkaAdapter;
         }
-
-
-
-        //To-DO: criar uma padrão para retorno com smart notification
         public string Execute(PlaceOrderInput order)
         {
-
-            #region Obter dados do banco
-            //Customer customer = _customerReadOnlyRepository.Get(customerId);
-            //if (customer == null)
-            //{
-            //    AddNotification("Customer", "Customer does not exist.");
-            //}
-            #endregion
-
-            //Simulando dados, não implementei acesso a dados
+            //Simulação de dados e regras de negócios
             var name = new NameVo("Ray", "Carneiro");
             var cpf = new CpfVo("15366015006");
             var email = new EmailVo("contato@academiadotnet.com.br");
@@ -69,13 +55,14 @@ namespace Valhalla.Modules.Application.Commands.PlaceOrder
 
             try
             {
+                //Salva ordem no banco de dados
                 orderId = _orderWriteOnlyRepository.PlaceOrder(_customer, _order);
 
-                _kafkaProducer.Produce(orderId);
+                //Envia mensagem para Kafka
+                _kafkaAdapter.Produce(orderId);
             }
-            catch (Exception ex)
+            catch
             {
-                //TO-DO: Implement log
                 throw;
             }
 

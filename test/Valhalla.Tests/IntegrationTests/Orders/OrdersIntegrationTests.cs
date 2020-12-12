@@ -3,7 +3,6 @@ using NUnit.Framework;
 using System;
 using Valhalla.Modules.Application.Commands.PlaceOrder;
 using Valhalla.Modules.Application.Inputs.Order;
-using Valhalla.Modules.Domain.Entities;
 using Valhalla.Tests.Fakes;
 
 namespace Valhalla.Tests.IntegrationTests.Orders
@@ -14,8 +13,8 @@ namespace Valhalla.Tests.IntegrationTests.Orders
         public void OrderTests_PlaceOrder_ReturnOrderNumber()
         {
             PlaceOrderUseCase _placeOrder = new PlaceOrderUseCase(
-                new FakeCustomerReadOnlyRepository(), 
-                new FakeOrderWriteRepository(), 
+                new FakeCustomerReadOnlyRepository(),
+                new FakeOrderWriteRepository(),
                 new FakeKafkaProducer());
 
             Guid customerId = Guid.NewGuid();

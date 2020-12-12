@@ -1,33 +1,13 @@
 ﻿using Confluent.Kafka;
-using Microsoft.Extensions.Hosting;
 using System;
 using System.Threading;
-using System.Threading.Tasks;
 
-namespace Valhalla.Modules.API.Handlers
+namespace Valhalla.Adapters.KafkaStreaming.Subscriber
 {
-    public class OrdersHandler : IHostedService
+    public sealed class KafkaSubscriberAdapter : IKafkaSubscriberAdapter
     {
-        private Timer _timer;
-
-        public Task StartAsync(CancellationToken cancellationToken)
+        public void Subscribe()
         {
-            _timer = new Timer(CheckSchedules, null, TimeSpan.FromSeconds(1), TimeSpan.FromSeconds(15));
-            return Task.CompletedTask;
-        }
-
-        private void CheckSchedules(object state)
-        {
-            Console.WriteLine($"{DateTime.Now:o} => Running Orders Worker...");
-
-            KafkaSubscribe();
-
-        }
-
-        private void KafkaSubscribe()
-        {
-            Console.WriteLine($"{DateTime.Now:o} => Checking for new orders...");
-
             var conf = new ConsumerConfig
             {
                 GroupId = "order-consumer-group",
@@ -53,9 +33,6 @@ namespace Valhalla.Modules.API.Handlers
                         try
                         {
                             var cr = c.Consume(cts.Token);
-
-                            //var value = JsonSerializer.Deserialize<Dto>(cr.Message.Value);
-
                             Console.WriteLine($"Consumiu ordem '{cr.Message.Value}' at: '{cr.TopicPartitionOffset}'.");
                         }
                         catch (ConsumeException e)
@@ -69,12 +46,6 @@ namespace Valhalla.Modules.API.Handlers
                     c.Close();
                 }
             }
-
-        }
-
-        public Task StopAsync(CancellationToken cancellationToken)
-        {
-            return Task.CompletedTask;
         }
     }
 }

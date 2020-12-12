@@ -1,11 +1,11 @@
-﻿using Valhalla.Modules.Application.DistributedMessaging;
+﻿using Valhalla.Adapters.KafkaStreaming.Producer;
 
 namespace Valhalla.Tests.Fakes
 {
-    public class FakeKafkaProducer : IKafkaProducer
+    public class FakeKafkaProducer : IKafkaAdapter
     {
         public void Produce(object data)
-        {            
+        {
         }
     }
 }
