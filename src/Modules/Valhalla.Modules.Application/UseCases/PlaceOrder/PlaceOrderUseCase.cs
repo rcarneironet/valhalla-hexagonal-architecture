@@ -1,8 +1,9 @@
 ﻿using Flunt.Notifications;
 using System.Linq;
 using Valhalla.Adapters.KafkaStreaming.Producer;
+using Valhalla.Modules.Application.Abstractions.Commands;
+using Valhalla.Modules.Application.Abstractions.Queries;
 using Valhalla.Modules.Application.Inputs.Order;
-using Valhalla.Modules.Application.Repositories;
 using Valhalla.Modules.Domain.Entities;
 using Valhalla.Modules.Domain.ValueObjects;
 

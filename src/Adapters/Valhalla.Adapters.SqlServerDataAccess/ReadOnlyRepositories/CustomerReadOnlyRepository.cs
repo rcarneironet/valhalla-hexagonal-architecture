@@ -1,5 +1,5 @@
 ﻿using System;
-using Valhalla.Modules.Application.Repositories;
+using Valhalla.Modules.Application.Abstractions.Queries;
 using Valhalla.Modules.Domain.Entities;
 
 namespace Valhalla.Adapters.SqlServerDataAccess.ReadOnlyRepositories

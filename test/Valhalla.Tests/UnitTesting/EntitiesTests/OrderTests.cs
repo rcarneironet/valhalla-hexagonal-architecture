@@ -2,7 +2,6 @@
 using NUnit.Framework;
 using System;
 using Valhalla.Modules.Application.Commands.PlaceOrder;
-using Valhalla.Modules.Application.Repositories;
 using Valhalla.Modules.Domain.Entities;
 using Valhalla.Modules.Domain.Enums;
 using Valhalla.Modules.Domain.ValueObjects;
