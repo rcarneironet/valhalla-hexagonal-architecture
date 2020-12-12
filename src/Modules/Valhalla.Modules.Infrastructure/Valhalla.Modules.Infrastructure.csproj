@@ -10,6 +10,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Adapters\Valhalla.Adapters.SqlServerDataAccess\Valhalla.Adapters.SqlServerDataAccess.csproj" />
     <ProjectReference Include="..\Valhalla.Modules.Application\Valhalla.Modules.Application.csproj" />
   </ItemGroup>
 

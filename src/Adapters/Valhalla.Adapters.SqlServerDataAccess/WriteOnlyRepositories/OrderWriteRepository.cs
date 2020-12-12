@@ -3,7 +3,7 @@ using System.Linq;
 using Valhalla.Modules.Application.Repositories;
 using Valhalla.Modules.Domain.Entities;
 
-namespace Valhalla.Modules.Infrastructure.DataAccess
+namespace Valhalla.Adapters.SqlServerDataAccess.WriteOnlyRepositories
 {
     public class OrderWriteRepository : IOrderWriteRepository
     {

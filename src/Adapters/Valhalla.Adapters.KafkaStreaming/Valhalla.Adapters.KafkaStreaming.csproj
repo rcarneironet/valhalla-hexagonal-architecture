@@ -8,4 +8,8 @@
     <PackageReference Include="Confluent.Kafka" Version="1.5.3" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Config\" />
+  </ItemGroup>
+
 </Project>

@@ -13,7 +13,11 @@ namespace Valhalla.Adapters.KafkaStreaming.Producer
                 try
                 {
                     var dr = p.ProduceAsync("orders-topic",
-                        new Message<Null, string> { Value = JsonSerializer.Serialize(data) });
+                        new Message<Null, string>
+                        {
+                            Value = JsonSerializer.Serialize(data)
+                        });
+                    p.Flush();
                 }
                 catch (ProduceException<Null, string> e)
                 {

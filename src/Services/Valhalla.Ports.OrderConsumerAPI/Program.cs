@@ -1,9 +1,9 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Valhalla.Modules.API.Handlers;
+using Valhalla.Ports.OrderConsumerAPI.Workers;
 
-namespace Valhalla.Modules.API
+namespace Valhalla.Ports.OrderConsumerAPI
 {
     public class Program
     {
@@ -17,9 +17,10 @@ namespace Valhalla.Modules.API
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
+                    webBuilder.UseUrls("https://localhost:5010/");
                 }).ConfigureServices(services =>
                 {
-                    services.AddHostedService<OrdersHandler>();
+                    services.AddHostedService<OrdersConsumerHandler>();
                 });
     }
 }
