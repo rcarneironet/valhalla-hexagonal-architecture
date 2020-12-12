@@ -9,6 +9,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Adapters\Valhalla.Adapters.KafkaStreaming\Valhalla.Adapters.KafkaStreaming.csproj" />
     <ProjectReference Include="..\Valhalla.Modules.Domain\Valhalla.Modules.Domain.csproj" />
   </ItemGroup>
 

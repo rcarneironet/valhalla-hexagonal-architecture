@@ -12,7 +12,7 @@ namespace Valhalla.Modules.API.Handlers
 
         public Task StartAsync(CancellationToken cancellationToken)
         {
-            _timer = new Timer(CheckSchedules, null, TimeSpan.FromSeconds(1), TimeSpan.FromSeconds(15));
+            _timer = new Timer(CheckSchedules, null, TimeSpan.FromSeconds(1), TimeSpan.FromSeconds(5));
             return Task.CompletedTask;
         }
 

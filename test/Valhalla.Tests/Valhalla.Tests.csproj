@@ -14,6 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\src\Adapters\Valhalla.Adapters.KafkaStreaming\Valhalla.Adapters.KafkaStreaming.csproj" />
     <ProjectReference Include="..\..\src\Modules\Valhalla.Modules.Application\Valhalla.Modules.Application.csproj" />
     <ProjectReference Include="..\..\src\Modules\Valhalla.Modules.Domain\Valhalla.Modules.Domain.csproj" />
   </ItemGroup>

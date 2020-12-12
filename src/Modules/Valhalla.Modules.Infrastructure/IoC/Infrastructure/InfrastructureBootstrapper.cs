@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using Valhalla.Adapters.KafkaStreaming.Producer;
 using Valhalla.Modules.Application.DistributedMessaging;
 using Valhalla.Modules.Application.Repositories;
 using Valhalla.Modules.Infrastructure.DataAccess;
@@ -14,6 +15,7 @@ namespace Valhalla.Modules.Infrastructure.IoC.Infrastructure
             services.AddScoped<IOrderWriteRepository, OrderWriteRepository>();
 
             services.AddScoped<IKafkaProducer, KafkaProducer>();
+            services.AddScoped<IKafkaAdapter, KafkaAdapterProducer>();
 
         }
     }

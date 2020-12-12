@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using System;
 using Valhalla.Modules.Application.Commands.PlaceOrder;
 using Valhalla.Modules.Application.Inputs.Order;
 
