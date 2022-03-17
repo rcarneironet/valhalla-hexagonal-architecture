@@ -13,9 +13,9 @@ namespace Valhalla.Tests.IntegrationTests.Orders
         public void OrderTests_PlaceOrder_ReturnOrderNumber()
         {
             PlaceOrderUseCase _placeOrder = new PlaceOrderUseCase(
-                new FakeCustomerReadOnlyRepository(),
                 new FakeOrderWriteRepository(),
-                new FakeKafkaProducer());
+                new FakeKafkaProducer(),
+                new FakeServiceBusQueueProducer());
 
             Guid customerId = Guid.NewGuid();
 

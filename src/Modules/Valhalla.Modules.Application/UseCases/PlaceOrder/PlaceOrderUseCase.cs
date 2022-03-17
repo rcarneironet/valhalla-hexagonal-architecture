@@ -1,8 +1,10 @@
 ﻿using Flunt.Notifications;
+using System;
 using System.Linq;
+using System.Text.Json;
 using Valhalla.Adapters.KafkaStreaming.Producer;
+using Valhalla.Adapters.ServiceBus.QueueProducer;
 using Valhalla.Modules.Application.Abstractions.Commands;
-using Valhalla.Modules.Application.Abstractions.Queries;
 using Valhalla.Modules.Application.Inputs.Order;
 using Valhalla.Modules.Domain.Entities;
 using Valhalla.Modules.Domain.ValueObjects;
@@ -11,23 +13,24 @@ namespace Valhalla.Modules.Application.Commands.PlaceOrder
 {
     public class PlaceOrderUseCase : Notifiable, IPlaceOrderUseCase
     {
-        private readonly ICustomerReadOnlyRepository _customerReadOnlyRepository;
         private readonly IOrderWriteRepository _orderWriteOnlyRepository;
         private readonly IKafkaAdapter _kafkaAdapter;
+        private readonly IServiceBusQueueProducer _serviceBusQueueProducerAdapter;
 
         //mockados para demo
         private Customer _customer;
         private Order _order;
 
         public PlaceOrderUseCase(
-            ICustomerReadOnlyRepository customerReadOnlyRepository,
             IOrderWriteRepository orderWriteOnlyRepository,
-            IKafkaAdapter kafkaAdapter)
+            IKafkaAdapter kafkaAdapter,
+            IServiceBusQueueProducer serviceBusQueueProducerAdapter)
         {
-            _customerReadOnlyRepository = customerReadOnlyRepository;
             _orderWriteOnlyRepository = orderWriteOnlyRepository;
             _kafkaAdapter = kafkaAdapter;
+            _serviceBusQueueProducerAdapter = serviceBusQueueProducerAdapter;
         }
+
         public string Execute(PlaceOrderInput order)
         {
             //Simulação de dados e regras de negócios
@@ -60,11 +63,14 @@ namespace Valhalla.Modules.Application.Commands.PlaceOrder
                 orderId = _orderWriteOnlyRepository.PlaceOrder(_customer, _order);
 
                 //Envia mensagem para Kafka
-                _kafkaAdapter.Produce(orderId);
+                //_kafkaAdapter.Produce(orderId);
+
+                //Envia mensagem para fila no ServiceBus
+                _serviceBusQueueProducerAdapter.AddMessageAsync("myqueue", JsonSerializer.Serialize(_order));
             }
             catch
             {
-                throw;
+                throw new Exception($"Error executing PlaceOrderUseCase > Execute()");
             }
 
             return "Número do pedido: " + orderId;
