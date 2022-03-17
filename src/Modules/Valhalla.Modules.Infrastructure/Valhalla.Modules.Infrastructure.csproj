@@ -15,8 +15,4 @@
     <ProjectReference Include="..\Valhalla.Modules.Application\Valhalla.Modules.Application.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Shared\" />
-  </ItemGroup>
-
 </Project>
