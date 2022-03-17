@@ -7,8 +7,6 @@ namespace Valhalla.Adapters.ServiceBus.QueueProducer
         static ServiceBusClient? client;
         static ServiceBusSender? sender;
 
-        private const int numOfMessages = 3;
-
         public async Task AddMessageAsync(string queueName, string body)
         {
             client = new ServiceBusClient(ServiceBusConfiguration.ConnectionString);
