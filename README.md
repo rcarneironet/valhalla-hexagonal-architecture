@@ -14,6 +14,6 @@ The Hexagonal Architecture, also referred to as Ports and Adapters, is an archit
 
 ## Want to help?
 
-Open an issue [here](https://github.com/rcarneironet/valhalla-clean-architecture/issues/new) or open a PR.
+Open an issue [here](https://github.com/rcarneironet/valhalla-hexagonal-architecture/issues/new) or open a PR.
 
 If by any means this architecture helped you, star the repo!
