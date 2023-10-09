@@ -62,11 +62,8 @@ namespace Valhalla.Modules.Application.Commands.PlaceOrder
                 //Salva ordem no banco de dados
                 orderId = _orderWriteOnlyRepository.PlaceOrder(_customer, _order);
 
-                //Envia mensagem para Kafka
-                //_kafkaAdapter.Produce(orderId);
-
-                //Envia mensagem para fila no ServiceBus
-                _serviceBusQueueProducerAdapter.AddMessageAsync("myqueue", JsonSerializer.Serialize(_order));
+                _kafkaAdapter.Produce(orderId);
+                //_serviceBusQueueProducerAdapter.AddMessageAsync("votes", JsonSerializer.Serialize(_order));
             }
             catch
             {

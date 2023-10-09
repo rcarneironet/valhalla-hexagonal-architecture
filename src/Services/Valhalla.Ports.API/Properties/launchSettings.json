@@ -3,7 +3,7 @@
   "profiles": {
     "Valhalla.Ports.OrderAPI": {
       "commandName": "Project",
-      "launchBrowser": false,
+      "launchBrowser": true,
       "launchUrl": "orders",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"

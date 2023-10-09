@@ -1,0 +1,12 @@
+{
+  "profiles": {
+    "Valhalla.Ports.Workers.ServiceBus.QueueReceiver": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "applicationUrl": "https://localhost:52329;http://localhost:52330"
+    }
+  }
+}

@@ -3,7 +3,7 @@ using Valhalla.Adapters.ServiceBus.QueueProducer;
 
 string connectionString = ServiceBusConfiguration.ConnectionString;
 
-string queueName = "myqueue";
+string queueName = "votes";
 
 ServiceBusClient client;
 

@@ -1,0 +1,12 @@
+{
+  "profiles": {
+    "Valhalla.Adapters.KafkaStreaming": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "applicationUrl": "https://localhost:52323;http://localhost:52324"
+    }
+  }
+}

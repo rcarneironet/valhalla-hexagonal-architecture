@@ -52,8 +52,9 @@ namespace Valhalla.Tests.UnitTesting.EntitiesTests
         {
             _order.AddItem(_monitor, 5);
             _order.AddItem(_teclado, 5);
+            _order.AddItem(_teclado, 5);
 
-            Assert.AreEqual(2, _order.Itens.Count);
+            Assert.AreEqual(3, _order.Itens.Count);
         }
 
         [Test]

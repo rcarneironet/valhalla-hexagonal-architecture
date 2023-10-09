@@ -27,13 +27,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Valhalla.Ports.OrderConsume
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Valhalla.Ports.OrderAPI", "src\Services\Valhalla.Ports.API\Valhalla.Ports.OrderAPI.csproj", "{05030313-67B5-4D2B-8745-8777FC3B4D42}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Valhalla.Adapters.ServiceBus", "src\Adapters\Valhalla.Adapters.ServiceBus\Valhalla.Adapters.ServiceBus.csproj", "{29A1C314-25F0-47B6-AB63-9EE66DDE7CE7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Valhalla.Adapters.ServiceBus", "src\Adapters\Valhalla.Adapters.ServiceBus\Valhalla.Adapters.ServiceBus.csproj", "{29A1C314-25F0-47B6-AB63-9EE66DDE7CE7}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Workers", "Workers", "{07E75811-6F70-432C-9CEF-23D194F6FC18}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ServiceBusWorker", "ServiceBusWorker", "{4338E4FE-644E-4867-93EC-7399B185A1C2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Valhalla.Ports.Workers.ServiceBus.QueueReceiver", "src\Services\Valhalla.Ports.Workers.ServiceBus.QueueReceiver\Valhalla.Ports.Workers.ServiceBus.QueueReceiver.csproj", "{FA57B2A0-265F-46FB-893D-EC36F568547B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Valhalla.Ports.Workers.ServiceBus.QueueReceiver", "src\Services\Valhalla.Ports.Workers.ServiceBus.QueueReceiver\Valhalla.Ports.Workers.ServiceBus.QueueReceiver.csproj", "{FA57B2A0-265F-46FB-893D-EC36F568547B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
