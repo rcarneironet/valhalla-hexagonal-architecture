@@ -5,12 +5,13 @@ This repository is a study implementation of Hexagonal Architecture (aka Ports a
 The Hexagonal Architecture, also referred to as Ports and Adapters, is an architectural pattern that allows input by users or external systems to arrive into the Application at a Port via an Adapter, and allows output to be sent out from the Application through a Port to an Adapter. This creates an abstraction layer that protects the core of an application and isolates it from external — and somehow irrelevant — tools and technologies.
 
 ## Stack / Tools
-* .NET 6
+* .NET 7/8
 * C#
-* Visual Studio 2019/2020
+* Visual Studio 2022
 * Kafka
 * Docker
 * Azure Service Bus
+* Chat GPT Integration
 
 ## Want to help?
 
