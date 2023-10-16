@@ -61,9 +61,9 @@ namespace Valhalla.Modules.Application.Commands.PlaceOrder
             {
                 //Salva ordem no banco de dados
                 orderId = _orderWriteOnlyRepository.PlaceOrder(_customer, _order);
-
+                
+                //_serviceBusQueueProducerAdapter.AddMessageAsync("orders", JsonSerializer.Serialize(_order));
                 _kafkaAdapter.Produce(orderId);
-                //_serviceBusQueueProducerAdapter.AddMessageAsync("votes", JsonSerializer.Serialize(_order));
             }
             catch
             {

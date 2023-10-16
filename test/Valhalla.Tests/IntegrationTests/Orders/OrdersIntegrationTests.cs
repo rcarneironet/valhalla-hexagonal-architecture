@@ -12,7 +12,7 @@ namespace Valhalla.Tests.IntegrationTests.Orders
         [Test]
         public void OrderTests_PlaceOrder_ReturnOrderNumber()
         {
-            PlaceOrderUseCase _placeOrder = new PlaceOrderUseCase(
+            PlaceOrderUseCase _placeOrder = new(
                 new FakeOrderWriteRepository(),
                 new FakeKafkaProducer(),
                 new FakeServiceBusQueueProducer());

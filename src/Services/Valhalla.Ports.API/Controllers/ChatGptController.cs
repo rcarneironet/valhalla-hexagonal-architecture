@@ -1,12 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace Valhalla.Ports.OrderConsumerAPI.Controllers
+namespace Valhalla.Ports.OrderAPI.Controllers
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class OrdersConsumerController : Controller
+    public class ChatGptController : Controller
     {
-
         [HttpGet]
         [ProducesResponseType(typeof(string), 200)]
         [ProducesResponseType(400)]
