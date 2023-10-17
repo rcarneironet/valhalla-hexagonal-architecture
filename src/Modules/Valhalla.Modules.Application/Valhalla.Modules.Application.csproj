@@ -1,21 +1,19 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-	  <TargetFramework>net8.0</TargetFramework>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>net8.0</TargetFramework>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Flunt" Version="1.0.5" />
-    <PackageReference Include="Microsoft.Extensions.Configuration" Version="7.0.0" />
-	<PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="3.1.8" />
-	<PackageReference Include="OpenAI" Version="1.7.2" />
-  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Flunt" Version="1.0.5" />
+		<PackageReference Include="OpenAI" Version="1.7.2" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\..\Adapters\Valhalla.Adapters.ChatGPT\Valhalla.Adapters.ChatGPT.csproj" />
-    <ProjectReference Include="..\..\Adapters\Valhalla.Adapters.KafkaStreaming\Valhalla.Adapters.KafkaStreaming.csproj" />
-    <ProjectReference Include="..\..\Adapters\Valhalla.Adapters.ServiceBus\Valhalla.Adapters.ServiceBus.csproj" />
-    <ProjectReference Include="..\Valhalla.Modules.Domain\Valhalla.Modules.Domain.csproj" />
-  </ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\..\Adapters\Valhalla.Adapters.ChatGPT\Valhalla.Adapters.ChatGPT.csproj" />
+		<ProjectReference Include="..\..\Adapters\Valhalla.Adapters.KafkaStreaming\Valhalla.Adapters.KafkaStreaming.csproj" />
+		<ProjectReference Include="..\..\Adapters\Valhalla.Adapters.ServiceBus\Valhalla.Adapters.ServiceBus.csproj" />
+		<ProjectReference Include="..\Valhalla.Modules.Domain\Valhalla.Modules.Domain.csproj" />
+	</ItemGroup>
 
 </Project>
